@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README Wizard - Generate Professional READMEs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #474a58 0%, #0fdce7 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #4d5f71;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #c5cbe1 0%, #98c223 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            display: none;
+        }
+        
+        .result h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .result pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            max-height: 500px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            display: none;
+        }
+        
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #667eea;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .copy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            float: right;
+        }
+        
+        .copy-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 README Wizard</h1>
+            <p>Generate professional README files in seconds</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="readmeForm">
+                <div class="form-group">
+                    <label for="name">Project Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="e.g., Fortnite Kill Tracker">
+                </div>
+                
+                <div class="form-group">
+                    <label for="version">Version *</label>
+                    <input type="text" id="version" name="version" required placeholder="e.g., 1.0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea id="description" name="description" required placeholder="Describe your project in detail..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="stack">Technology Stack *</label>
+                    <input type="text" id="stack" name="stack" required placeholder="e.g., C, C++, Fortnite API">
+                </div>
+                
+                <div class="form-group">
+                    <label for="audience">Target Audience *</label>
+                    <input type="text" id="audience" name="audience" required placeholder="e.g., Fortnite Gamers">
+                </div>
+                
+                <div class="form-group">
+                    <label for="usage_steps">Usage Steps *</label>
+                    <textarea id="usage_steps" name="usage_steps" required placeholder="Describe how to use your project..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="author">Author *</label>
+                    <input type="text" id="author" name="author" required placeholder="Your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="showcase_video">Showcase Video (optional)</label>
+                    <input type="text" id="showcase_video" name="showcase_video" placeholder="YouTube link or 'none at the moment'">
+                </div>
+                
+                <button type="submit" class="btn">Generate README</button>
+            </form>
+            
+            <div class="loading" id="loading">
+                <p>Generating your awesome README...</p>
+            </div>
+            
+            <div class="result" id="result">
+                <h3>Your Generated README:</h3>
+                <button class="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+                <pre id="readmeOutput"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://127.0.0.1:8000';
+        
+        document.getElementById('readmeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+            document.querySelector('.btn').disabled = true;
+            
+            try {
+                const response = await fetch(`${API_BASE}/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to generate README');
+                }
+                
+                const result = await response.json();
+                
+                // Show result
+                document.getElementById('readmeOutput').textContent = result.readme;
+                document.getElementById('result').style.display = 'block';
+                
+            } catch (error) {
+                alert('Error generating README: ' + error.message);
+            } finally {
+                // Hide loading
+                document.getElementById('loading').style.display = 'none';
+                document.querySelector('.btn').disabled = false;
+            }
+        });
+        
+        function copyToClipboard() {
+            const output = document.getElementById('readmeOutput');
+            navigator.clipboard.writeText(output.textContent).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
