@@ -16,12 +16,17 @@ def main():
     parser.add_argument("--stack", "-s", required=True, help="Technology stack used")
     parser.add_argument("--audience", "-a", required=True, help="Target audience")
     parser.add_argument("--output", "-o", default="README.md", help="Output file name (default: README.md)")
+    parser.add_argument("--name", "-n", required=True, help="Project name")
+    parser.add_argument("--version", "-v", required=True, help="Project version")
+    parser.add_argument("--usage", "-u", required=True, help="Usage steps")
+    parser.add_argument("--author", "-r", required=True, help="Author name")
+    parser.add_argument("--video", "-t", required=True, help="Showcase video link")
     
     args = parser.parse_args()
     
     try:
         print("🚀 Generating README file...")
-        readme_content = generate_readme(args.description, args.stack, args.audience)
+        readme_content = generate_readme(args.description, args.stack, args.audience, args.name, args.version, args.usage, args.author, args.video)
         
         with open(args.output, 'w', encoding='utf-8') as f:
             f.write(readme_content)
