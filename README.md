@@ -21,13 +21,13 @@ The target audience includes software developers, open-source contributors, stud
 1. Clone the repository to your local machine
 2. Install dependencies: `pip install -r requirements.txt`
 3. Set up your OpenAI API key in a `.env` file
-4a. Run the FastAPI server: `uvicorn backend.main:app --reload`.
+4. Run the FastAPI server: `uvicorn backend.main:app --reload`.
 5. Open your browser and navigate to the local server (127.0.0.1:8000)
 6. Fill out the form with your project details
 7. Click "Generate README" to create your professional documentation
 8. Copy the generated README content to your project
 
-4b.  Alternatively you can run it trough CLI using the wizard.py file. 
+Alternative to 4.  Alternatively you can run it trough CLI using the wizard.py file. 
     Example Usage: "cd cli; python wizard.py -d "A cool web app" -s "Python, Flask" -a "Developers" -n "MyApp" -v "1.0.0" -u "pip install && python app.py" -r "John Doe" -t "https://youtube.com/watch?v=demo""
     You would now get a finished readme in the readme.md file.
 
